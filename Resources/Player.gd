@@ -14,9 +14,13 @@ const new_game_cards:int = 2
 
 @export var list: Array
 
-func game_setup():
-	cards = new_game_cards
+func game_setup(data={}):
+	if data:
+		cards=data["cards"]
+	else:
+		cards = new_game_cards
 	list = Items.get_shoping_list()
+	GlobalSignalBus.update_list.emit(list)
 	set_budget()
 
 
@@ -73,6 +77,7 @@ func list_management(item):
 			list_item["have"] += 1
 			if list_item["have"] >= list_item["need"]:
 				check_complete()
+	GlobalSignalBus.update_list.emit(list)
 
 
 func check_complete():

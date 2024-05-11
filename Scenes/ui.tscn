@@ -1,0 +1,124 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfuhpglhanxix"]
+
+[ext_resource type="Theme" uid="uid://d0f3y7n6vg08e" path="res://Resources/checkout.tres" id="1_mgy41"]
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="2_23xkf"]
+[ext_resource type="Texture2D" uid="uid://d1ejbl03uj5wl" path="res://Textures/00_General_Pack.png" id="3_05spa"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mtayd"]
+texture = ExtResource("3_05spa")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(12, 161, 24, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5misn"]
+texture = ExtResource("3_05spa")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.5132
+region_rect = Rect2(52, 117, 40, 38)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("1_mgy41")
+script = ExtResource("2_23xkf")
+
+[node name="list_background" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 248.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mtayd")
+
+[node name="shopping_list" type="VBoxContainer" parent="list_background"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="list_background/shopping_list"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Shopping List:"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="shopping_list" type="Label" parent="list_background/shopping_list"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="start_button" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 480.0
+offset_top = 232.0
+offset_right = 730.0
+offset_bottom = 319.0
+theme_override_font_sizes/font_size = 50
+text = "Start!"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 528.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+
+[node name="game_over_screen" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5misn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="game_over_screen"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="game_over_screen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="results" type="Label" parent="game_over_screen/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="game_over_screen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="restart" type="Button" parent="game_over_screen/VBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Try Again?"
+
+[node name="next" type="Button" parent="game_over_screen/VBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next Level"
+
+[node name="quit" type="Button" parent="game_over_screen/VBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit
+"
+
+[node name="Control2" type="Control" parent="game_over_screen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

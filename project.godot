@@ -20,6 +20,10 @@ Items="*res://Resources/Items.gd"
 Global="*res://Global/Global.gd"
 GlobalSignalBus="*res://Global/GlobalSignalBus.gd"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 left={

@@ -1,14 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck06psxt3h6bi"]
+[gd_scene load_steps=8 format=3 uid="uid://ck06psxt3h6bi"]
 
 [ext_resource type="PackedScene" uid="uid://bo536j7bq23gv" path="res://Scenes/Basket.tscn" id="1_58yla"]
 [ext_resource type="Script" path="res://Scenes/checkout.gd" id="1_61xim"]
+[ext_resource type="Theme" uid="uid://d0f3y7n6vg08e" path="res://Resources/checkout.tres" id="3_0ubw8"]
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="3_xwy1r"]
+[ext_resource type="Texture2D" uid="uid://d1ejbl03uj5wl" path="res://Textures/00_General_Pack.png" id="4_30lk5"]
 
 [sub_resource type="Curve2D" id="Curve2D_skpt5"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 280, 0, 0, 0, 0, 0, 1064, 0)
 }
 point_count = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mtayd"]
+texture = ExtResource("4_30lk5")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(12, 161, 24, 14)
 
 [node name="Checkout" type="Node2D"]
 script = ExtResource("1_61xim")
@@ -27,21 +37,30 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+theme = ExtResource("3_0ubw8")
 script = ExtResource("3_xwy1r")
 
 [node name="list_background" type="PanelContainer" parent="UI"]
 layout_mode = 0
 offset_right = 248.0
 offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mtayd")
 
 [node name="shopping_list" type="VBoxContainer" parent="UI/list_background"]
 layout_mode = 2
 
 [node name="title" type="Label" parent="UI/list_background/shopping_list"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Shopping List:"
 horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="shopping_list" type="Label" parent="UI/list_background/shopping_list"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="start_button" type="Button" parent="UI"]
 layout_mode = 0
@@ -72,14 +91,36 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Label" type="Label" parent="UI/game_over_screen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/game_over_screen"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="UI/game_over_screen/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 90
 text = "GAME OVER"
 horizontal_alignment = 1
 
+[node name="results" type="Label" parent="UI/game_over_screen/VBoxContainer"]
+layout_mode = 2
+
+[node name="restart" type="Button" parent="UI/game_over_screen/VBoxContainer"]
+layout_mode = 2
+text = "Try Again?"
+
+[node name="next" type="Button" parent="UI/game_over_screen/VBoxContainer"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="quit" type="Button" parent="UI/game_over_screen/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
 [node name="item_timer" type="Timer" parent="."]
+
+[node name="item_timer2" type="Timer" parent="."]
 
 [connection signal="collected" from="Basket" to="." method="_on_basket_collected"]
 [connection signal="button_up" from="UI/start_button" to="." method="_on_button_button_up"]
 [connection signal="timeout" from="item_timer" to="." method="_on_item_timer_timeout"]
+[connection signal="timeout" from="item_timer2" to="." method="_on_item_timer_2_timeout"]

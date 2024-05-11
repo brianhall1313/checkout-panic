@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://5nq7skqjgsw7" path="res://Textures/MegaPixelArt32x32pxIcons_SpriteSheet.png" id="1_ppi2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_back4"]
+size = Vector2(24, 24)
 
 [node name="Item" type="RigidBody2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_byble")
 
 [node name="icon" type="Sprite2D" parent="."]
@@ -15,6 +17,7 @@ region_rect = Rect2(36, 549, 23, 22)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_back4")
+debug_color = Color(0.362606, 0.523621, 0.863355, 0.42)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
