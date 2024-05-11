@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bwpgglbtn3fw6"]
+
+[ext_resource type="Script" path="res://Resources/Player.gd" id="1_un3th"]
+
+[resource]
+script = ExtResource("1_un3th")
+budget = 0
+spent = 0
+credit_limit = 10
+credit_current = 0
+debt = 0

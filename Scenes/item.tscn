@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d27xjh233troe"]
+
+[ext_resource type="Script" path="res://Scenes/item.gd" id="1_byble"]
+[ext_resource type="Texture2D" uid="uid://5nq7skqjgsw7" path="res://Textures/MegaPixelArt32x32pxIcons_SpriteSheet.png" id="1_ppi2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_back4"]
+
+[node name="Item" type="RigidBody2D"]
+script = ExtResource("1_byble")
+
+[node name="icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_ppi2k")
+region_enabled = true
+region_rect = Rect2(36, 549, 23, 22)
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_back4")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
