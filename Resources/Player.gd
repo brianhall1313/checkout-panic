@@ -4,19 +4,19 @@ extends Resource
 @export var budget:int
 @export var spent: int
 #number of credit cards you have
-const new_game_cards:int = 2
+const new_game_cards:int = 3
 @export var cards:int =0
 #credit card spending limit,credit you currently have
-@export var credit_limit:int = 3
+@export var credit_limit:int = 15
 @export var credit_current:int = 0
 #total debt from all cards
 @export var debt:int=0
 
 @export var list: Array
 
-func game_setup(data={}):
-	if data:
-		cards=data["cards"]
+func game_setup(load_game=false):
+	if load_game:
+		load_data()
 	else:
 		cards = new_game_cards
 	list = Items.get_shoping_list()
@@ -33,7 +33,11 @@ func set_budget():
 func bought(item:String):
 	list_management(item)
 	var overage:int = 0
-	var cost:int=Items.items[item]["cost"]
+	var cost:int=0
+	if item in Items.hazard.keys():
+		cost = Items.hazard[item]["cost"]
+	else:
+		cost = Items.items[item]["cost"]
 	if spent < budget:
 		if cost<=budget-spent:
 			spent += cost
@@ -87,3 +91,16 @@ func check_complete():
 	GlobalSignalBus.list_complete.emit()
 
 
+func get_budget():
+	return {
+		"budget":budget,
+		"spent": spent,
+		"cards":cards,
+		"credit_limit":credit_limit,
+		"credit_current" : credit_current
+	}
+
+func load_data():
+	cards = Global.data["cards"]
+	credit_limit = Global.data["credit_limit"]
+	credit_current = Global.data["credit_current"]

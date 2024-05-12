@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck06psxt3h6bi"]
+[gd_scene load_steps=8 format=3 uid="uid://ck06psxt3h6bi"]
 
 [ext_resource type="PackedScene" uid="uid://bo536j7bq23gv" path="res://Scenes/Basket.tscn" id="1_58yla"]
 [ext_resource type="Script" path="res://Scenes/checkout.gd" id="1_61xim"]
+[ext_resource type="Texture2D" uid="uid://dbk62hmtroegn" path="res://Textures/pattern_15.png" id="2_w5wql"]
 [ext_resource type="PackedScene" uid="uid://dfuhpglhanxix" path="res://Scenes/ui.tscn" id="3_ldd5r"]
+[ext_resource type="AudioStream" uid="uid://1ib7h7k1noy7" path="res://Sound/Ultra Polka-by-Kevin-Macleod.wav" id="5_jqio8"]
+[ext_resource type="Script" path="res://Scenes/Effects.gd" id="6_q8kec"]
 
 [sub_resource type="Curve2D" id="Curve2D_skpt5"]
 _data = {
@@ -12,6 +15,15 @@ point_count = 2
 
 [node name="Checkout" type="Node2D"]
 script = ExtResource("1_61xim")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.791999, 0.791999, 0.791999, 1)
+offset_left = -1136.0
+offset_top = -544.0
+offset_right = 2304.0
+offset_bottom = 1464.0
+texture = ExtResource("2_w5wql")
+stretch_mode = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_skpt5")
@@ -28,7 +40,20 @@ position = Vector2(555, 569)
 
 [node name="item_timer2" type="Timer" parent="."]
 
+[node name="hazard_timer" type="Timer" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jqio8")
+volume_db = -25.0
+autoplay = true
+
+[node name="Effects" type="AudioStreamPlayer" parent="."]
+script = ExtResource("6_q8kec")
+
+[node name="effect_backup" type="AudioStreamPlayer" parent="."]
+
 [connection signal="collected" from="Basket" to="." method="_on_basket_collected"]
 [connection signal="start" from="UI" to="." method="_on_ui_start"]
 [connection signal="timeout" from="item_timer" to="." method="_on_item_timer_timeout"]
 [connection signal="timeout" from="item_timer2" to="." method="_on_item_timer_2_timeout"]
+[connection signal="timeout" from="hazard_timer" to="." method="_on_hazard_timer_timeout"]

@@ -4,7 +4,7 @@ extends Control
 @onready var item_title = $HBoxContainer/item
 @onready var progress = $HBoxContainer/progress
 @onready var complete = $HBoxContainer/complete
-
+var initial_complete:bool = false
 
 
 func initial_data(item_stats):
@@ -18,5 +18,8 @@ func update_data(item_stats):
 	if item_stats["have"] >= item_stats["need"]:
 		done_icon.hide()
 		complete.show()
+		if initial_complete == false:
+			GlobalSignalBus.play_effect.emit("complete")
+			initial_complete = true
 
 

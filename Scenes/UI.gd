@@ -6,7 +6,12 @@ extends Control
 @onready var results=$game_over_screen/VBoxContainer/results
 @onready var next=$game_over_screen/VBoxContainer/next
 @onready var shopping_list=$list_background/shopping_list
+@onready var spent=$balance/GridContainer/spent
+@onready var card_display=$balance/GridContainer/card_display
+@onready var total=$balance/GridContainer/total
+
 @onready var list_entry:PackedScene = load("res://Scenes/list_entry_ui.tscn")
+@onready var card_sprite:PackedScene = load("res://Scenes/credit_card.tscn")
 
 
 signal start
@@ -37,8 +42,17 @@ func initial_list(list):
 		new.initial_data(item)
 
 
+func update_cards(cards):
+	for card in card_display.get_children():
+		card.queue_free()
+	for i in range(cards):
+		card_display.add_child(card_sprite.instantiate())
+
+
 func update_balance(balance):
-	pass
+	spent.text = "$"+str(balance.spent)+"/$"+str(balance.budget)
+	update_cards(balance.cards)
+	total.text = "$"+str(balance.credit_current)+"/$"+str(balance.credit_limit)
 
 
 func _on_game_over(debt):
@@ -64,9 +78,11 @@ func _on_quit_button_up():
 
 func _on_next_button_up():
 	Global.intensity+=1
+	Global.change_state("continue")
 	get_tree().reload_current_scene()
 
 
 func _on_restart_button_up():
 	Global.intensity=1
+	Global.change_state("new")
 	get_tree().reload_current_scene()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cys6ddwyjimt2"]
+[gd_scene load_steps=5 format=3 uid="uid://cys6ddwyjimt2"]
 
 [ext_resource type="Script" path="res://Scenes/start_screen.gd" id="1_2oseg"]
 [ext_resource type="Theme" uid="uid://d0f3y7n6vg08e" path="res://Resources/checkout.tres" id="2_cuybx"]
+[ext_resource type="Texture2D" uid="uid://dbk62hmtroegn" path="res://Textures/pattern_15.png" id="3_gtis7"]
+[ext_resource type="AudioStream" uid="uid://dvrscexp23agu" path="res://Sound/Happy-happy-game-show-by-Kevin-Macleod.wav" id="4_ejpe2"]
 
 [node name="start_screen" type="Node2D"]
 script = ExtResource("1_2oseg")
@@ -15,17 +17,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_cuybx")
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 1160.0
-offset_bottom = 656.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0.71213, 0.712129, 0.712129, 1)
+layout_mode = 0
+offset_left = -1136.0
+offset_top = -544.0
+offset_right = 2304.0
+offset_bottom = 1464.0
+texture = ExtResource("3_gtis7")
+stretch_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
@@ -39,6 +39,18 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Start Game"
+
+[node name="how_to_play" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "How To Play"
+
+[node name="credits" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
 
 [node name="quit" type="Button" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -59,5 +71,12 @@ theme_override_font_sizes/font_size = 70
 text = "Checkout Panic!"
 horizontal_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ejpe2")
+volume_db = -10.0
+autoplay = true
+
 [connection signal="button_up" from="Control/VBoxContainer/start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/how_to_play" to="." method="_on_how_to_play_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/credits" to="." method="_on_credits_button_up"]
 [connection signal="button_up" from="Control/VBoxContainer/quit" to="." method="_on_quit_button_up"]

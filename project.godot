@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Checkout Panic"
+config/description="A game made for Mini Jam 158: Shopping"
 run/main_scene="res://Scenes/start_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -20,6 +21,10 @@ config/icon="res://icon.svg"
 Items="*res://Resources/Items.gd"
 Global="*res://Global/Global.gd"
 GlobalSignalBus="*res://Global/GlobalSignalBus.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [filesystem]
 

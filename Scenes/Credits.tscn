@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7oqf0elheedu"]
+
+[ext_resource type="Script" path="res://Scenes/Credits.gd" id="1_urje6"]
+[ext_resource type="Theme" uid="uid://d0f3y7n6vg08e" path="res://Resources/checkout.tres" id="2_5l51e"]
+[ext_resource type="AudioStream" uid="uid://dvrscexp23agu" path="res://Sound/Happy-happy-game-show-by-Kevin-Macleod.wav" id="3_ov5p1"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_urje6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme = ExtResource("2_5l51e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="credits" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Game design and programming:
+Brian Hall
+https://pr0t34n.itch.io/
+
+Art:
+https://cafedraw.itch.io/
+https://piiixl.itch.io/
+https://mounirtohami.itch.io/
+https://pzuh.itch.io/
+https://kenney.nl/
+
+Music and sound:
+Kevin Macleod
+https://happysoulmusic.com/kevin-macleod/
+Kenny
+https://kenney.nl/
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Created for Mini Jam 158: Shopping"
+horizontal_alignment = 1
+
+[node name="back_button" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Go Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ov5p1")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="button_up" from="Control/PanelContainer/VBoxContainer/back_button" to="." method="_on_back_button_button_up"]

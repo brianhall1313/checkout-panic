@@ -6,14 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_back4"]
 size = Vector2(24, 24)
 
-[node name="Item" type="RigidBody2D"]
+[node name="Item" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+motion_mode = 1
 script = ExtResource("1_byble")
 
 [node name="icon" type="Sprite2D" parent="."]
 texture = ExtResource("1_ppi2k")
 region_enabled = true
-region_rect = Rect2(36, 549, 23, 22)
+region_rect = Rect2(66, 521, 25, 13)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_back4")

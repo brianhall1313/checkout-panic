@@ -14,7 +14,7 @@ func _physics_process(delta):
 		velocity = direction * SPEED
 		
 		position += velocity * delta
-		position = position.clamp(Vector2.ZERO, screen_size)
+		position = position.clamp(Vector2(250,0), screen_size)
 
 
 func _on_body_entered(body):
