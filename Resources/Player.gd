@@ -20,7 +20,7 @@ func game_setup(data={}):
 	else:
 		cards = new_game_cards
 	list = Items.get_shoping_list()
-	GlobalSignalBus.update_list.emit(list)
+	GlobalSignalBus.initial_list.emit(list)
 	set_budget()
 
 

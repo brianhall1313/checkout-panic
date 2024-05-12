@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://tyduj00re81a"]
+
+[ext_resource type="Texture2D" uid="uid://cxvh4jjipljyy" path="res://Textures/pixelCardAssest.png" id="1_qqq88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dson"]
+atlas = ExtResource("1_qqq88")
+region = Rect2(366, 4, 100, 128)
+
+[node name="TextureRect" type="TextureRect"]
+texture = SubResource("AtlasTexture_6dson")
+expand_mode = 3

@@ -7,7 +7,7 @@
 size = Vector2(24, 24)
 
 [node name="Item" type="RigidBody2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 script = ExtResource("1_byble")
 
 [node name="icon" type="Sprite2D" parent="."]

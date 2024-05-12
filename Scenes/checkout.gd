@@ -39,11 +39,6 @@ func _on_item_timer_timeout():
 			spawn_item()
 
 
-func _on_button_button_up():
-	$UI/start_button.hide()
-	start_level()
-
-
 func _on_basket_collected(collected_item):
 	if Global.state == "play":
 		player.bought(collected_item.item_name)
@@ -64,3 +59,7 @@ func _on_item_timer_2_timeout():
 	if Global.state == "play":
 		timer2.wait_time = randf()
 		spawn_item()
+
+
+func _on_ui_start():
+	start_level()

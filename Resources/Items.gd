@@ -6,6 +6,18 @@ const item_database:Array[Dictionary]=[{"orange":{"region":Rect2(36,549,23,22),"
 	"broccoli":{"region":Rect2(68,580,24,22),"cost":1},
 	"carrot":{"region":Rect2(331,578,9,29),"cost":1},
 	},
+	{
+	"fish":{"region":Rect2(66,512,25,13),"cost":5},
+	"corn":{"region":Rect2(357,581,22,22),"cost":5},
+	},
+	{
+	"tomato":{"region":Rect2(167,583,19,18),"cost":5},
+	"cheese":{"region":Rect2(100,522,23,14),"cost":5},
+	},
+	{
+	"bell pepper":{"region":Rect2(358,550,17,19),"cost":5},
+	"lettuce":{"region":Rect2(7,582,20,20),"cost":5},
+	},
 	]
 
 

@@ -46,10 +46,6 @@ text = "Shopping List:"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="shopping_list" type="Label" parent="list_background/shopping_list"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-
 [node name="start_button" type="Button" parent="."]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 0
@@ -71,8 +67,35 @@ offset_bottom = 648.0
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="PanelContainer/GridContainer"]
+[node name="budget_title" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Budget:"
+
+[node name="spent" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$0"
+horizontal_alignment = 2
+
+[node name="cards" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Credit Cards:"
+
+[node name="card_display" type="HBoxContainer" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+
+[node name="creditted" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Card Balance:"
+
+[node name="total" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$0/$10"
+horizontal_alignment = 2
 
 [node name="game_over_screen" type="PanelContainer" parent="."]
 visible = false
@@ -122,3 +145,8 @@ text = "Quit
 [node name="Control2" type="Control" parent="game_over_screen/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[connection signal="button_up" from="start_button" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="game_over_screen/VBoxContainer/restart" to="." method="_on_restart_button_up"]
+[connection signal="button_up" from="game_over_screen/VBoxContainer/next" to="." method="_on_next_button_up"]
+[connection signal="button_up" from="game_over_screen/VBoxContainer/quit" to="." method="_on_quit_button_up"]

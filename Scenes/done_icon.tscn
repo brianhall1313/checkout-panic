@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://t8r2ubjwt3ph"]
+
+[ext_resource type="Texture2D" uid="uid://cw1cerbaa3jjr" path="res://Textures/Button.png" id="1_v7wkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenkg"]
+atlas = ExtResource("1_v7wkg")
+region = Rect2(1661, 3353, 176, 185)
+
+[node name="done_icon" type="TextureRect"]
+texture = SubResource("AtlasTexture_nenkg")
+expand_mode = 3

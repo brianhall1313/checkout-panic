@@ -1,28 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://cys6ddwyjimt2"]
+[gd_scene load_steps=3 format=3 uid="uid://cys6ddwyjimt2"]
 
 [ext_resource type="Script" path="res://Scenes/start_screen.gd" id="1_2oseg"]
+[ext_resource type="Theme" uid="uid://d0f3y7n6vg08e" path="res://Resources/checkout.tres" id="2_cuybx"]
 
 [node name="start_screen" type="Node2D"]
 script = ExtResource("1_2oseg")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_cuybx")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 1160.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 416.0
+offset_top = 392.0
+offset_right = 712.0
+offset_bottom = 608.0
+
+[node name="start" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="quit" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="Panel" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 152.0
+offset_right = 944.0
+offset_bottom = 272.0
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = "Checkout Panic!"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button2" type="Button" parent="Control"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[connection signal="button_up" from="Control/VBoxContainer/start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/quit" to="." method="_on_quit_button_up"]
