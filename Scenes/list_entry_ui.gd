@@ -21,5 +21,3 @@ func update_data(item_stats):
 		if initial_complete == false:
 			GlobalSignalBus.play_effect.emit("complete")
 			initial_complete = true
-
-

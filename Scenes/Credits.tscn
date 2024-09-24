@@ -28,7 +28,15 @@ theme_override_font_sizes/font_size = 50
 text = "Credits"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Created for Mini Jam 158: Shopping
+Engine: Godot 4
+"
+horizontal_alignment = 1
+
 [node name="credits" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 text = "Game design and programming:
@@ -52,10 +60,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="Control/PanelContainer/VBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="Control/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Created for Mini Jam 158: Shopping"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Godot License"
+uri = "https://godotengine.org/license/"
 
 [node name="back_button" type="Button" parent="Control/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)

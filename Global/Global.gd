@@ -18,5 +18,3 @@ func change_state(new_state:String):
 		state = new_state
 	else:
 		print("not a state")
-
-
